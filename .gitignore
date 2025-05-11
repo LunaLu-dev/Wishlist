@@ -21,14 +21,11 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode
 .history/*
 
 # Miscellaneous
+.angular/
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -40,3 +37,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+/emulator-data/
+
+#Firestore
+.firebaserc
+firebase.json
+firebase-debug.log
+firestore-debug.log
+firestore.indexes.json
+firestore.rules

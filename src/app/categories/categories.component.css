@@ -1,0 +1,11 @@
+.container{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*.container > div{*/
+/*  width: 200px;*/
+/*}*/
