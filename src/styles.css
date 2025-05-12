@@ -5,5 +5,51 @@
 }
 
 body {
-	background-image: url("/assets/background.webp");
+  /*noinspection CssUnknownTarget*/
+	background-image: url('/assets/background.webp');
+}
+
+.category_display{
+  width: 200px;
+  /*overflow: hidden;*/
+  padding: 5px;
+  /*border-radius: 15px;*/
+}
+
+.category_display > img{
+  width: 200px;
+  animation: img-zoom-out 0.5s;
+  transform: scale(1);
+}
+
+.category_display > img:hover{
+  width: 200px;
+  animation: img-zoom-in 0.5s;
+  transform: scale(1.2);
+}
+
+@keyframes img-zoom-in {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes img-zoom-out {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.container{
+text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

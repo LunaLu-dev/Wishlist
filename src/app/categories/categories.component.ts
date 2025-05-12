@@ -22,7 +22,10 @@ export class CategoriesComponent implements OnInit {
 
 
   constructor() {
-    const userid = "PemwLD9jrlh1P5vHGSfI";
+    //TODO: DELETE THIS LATER (TEST API)
+    const userid: string = "PemwLD9jrlh1P5vHGSfI";
+
+
     const categoriesCollection = collection(this.firestore, 'users/' + userid + '/categories');
     this.categories$ = collectionData(categoriesCollection) as Observable<Categories[]>;
   }
@@ -38,9 +41,11 @@ export class CategoriesComponent implements OnInit {
         console.log(category);
 
         const category_display: HTMLDivElement = document.createElement("div");
+        category_display.className = "category_display";
+        category_display.onclick = () => {window.location.pathname = window.location.pathname + "/category/"+category.code_name}
 
-        const title: HTMLHeadingElement = document.createElement("h1");
-        title.innerText = category.title;
+        const cat_title: HTMLHeadingElement = document.createElement("h1");
+        cat_title.innerText = category.title;
 
         const img:  HTMLImageElement = document.createElement("img");
         img.src = category.img_url;
@@ -49,7 +54,7 @@ export class CategoriesComponent implements OnInit {
 
 
        category_display.appendChild(img);
-       category_display.appendChild(title);
+       category_display.appendChild(cat_title);
 
         containerElement?.appendChild(category_display)
       })
