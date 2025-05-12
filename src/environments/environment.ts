@@ -7,7 +7,9 @@ export const environment = {
     projectId: "wishlist-18204",
     storageBucket: "wishlist-18204.firebasestorage.app",
     messagingSenderId: "557291296449",
-    appId: "1:557291296449:web:2b702c000740edd3a26640"
+    appId: "1:557291296449:web:2b702c000740edd3a26640",
+    reCaptchaSiteKey: '6LfxJDYrAAAAADz3DvXNo_GHvsMWN2QE-qJVqtFF'
+
   },
   emulators: {
     firestore: {
