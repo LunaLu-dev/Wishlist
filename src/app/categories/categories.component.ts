@@ -39,8 +39,12 @@ ngOnInit() {
           img.height = 200;
           img.width = 200;
 
+          const img_container: HTMLDivElement = document.createElement("div");
+          img_container.className = "img_container";
+          img_container.appendChild(img);
 
-          category_display.appendChild(img);
+
+          category_display.appendChild(img_container);
           category_display.appendChild(cat_title);
 
           const containerElement = document.getElementById("container");

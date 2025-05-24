@@ -80,7 +80,7 @@ export class ItemsComponent implements OnInit {
             const item_display: HTMLDivElement = document.createElement("div");
             item_display.className = "category_display";
             item_display.onclick = () => {
-              window.location.pathname = "category/" + item.code_name
+              window.open(item.url, "_blank");
             }
 
             const item_title: HTMLHeadingElement = document.createElement("h1");
@@ -93,6 +93,10 @@ export class ItemsComponent implements OnInit {
             img.src = item.img_url;
             img.height = 200;
             img.width = 200;
+
+            const imgContainer: HTMLDivElement = document.createElement("div");
+            imgContainer.className = "img_container";
+            imgContainer.appendChild(img);
 
             if (!window.localStorage.getItem("currency")) {
               await this.getCurrency();
@@ -109,7 +113,7 @@ export class ItemsComponent implements OnInit {
             }
 
 
-            item_display.appendChild(img);
+            item_display.appendChild(imgContainer);
             item_display.appendChild(item_title);
             item_display.appendChild(item_price);
 

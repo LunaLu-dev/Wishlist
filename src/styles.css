@@ -11,19 +11,26 @@ body {
 
 .category_display{
   width: 200px;
-  /*overflow: hidden;*/
+
   padding: 5px;
-  /*border-radius: 15px;*/
+
+}
+.img_container{
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.category_display > img{
-  width: 200px;
+.img_container > img{
+  text-align: center;
+  width: max-content;
   animation: img-zoom-out 0.5s;
   transform: scale(1);
+
+
 }
 
-.category_display > img:hover{
-  width: 200px;
+.img_container > img:hover{
+  width: max-content;
   animation: img-zoom-in 0.5s;
   transform: scale(1.2);
 }
