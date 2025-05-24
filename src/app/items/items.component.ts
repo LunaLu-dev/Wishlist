@@ -1,6 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {collection, collectionData, Firestore, query, where} from '@angular/fire/firestore';
-import {Observable} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 export interface Items {
@@ -18,56 +16,89 @@ export interface Items {
 export class ItemsComponent implements OnInit {
 
   categoryId?: string;
-  items$: Observable<Items[]>;
-  private firestore = inject(Firestore);
+  localCurrency?: string;
 
   constructor(private route: ActivatedRoute) {
-    //TODO: DELETE THIS LATER (TEST API)
-    const userid: string = "PemwLD9jrlh1P5vHGSfI";
-
-    const q = query(
-      collection(this.firestore, 'users/' + userid + '/items'),
-      where('category', '==', this.route.snapshot.paramMap.get('categoryId'))
-    );
-
-    console.log(q);
-    console.log(this.route.snapshot.paramMap.get('categoryId'));
-
-    this.items$ = collectionData(q) as Observable<Items[]>;
   }
+
+
+
 
   ngOnInit() {
 
-    this.items$.subscribe(items => {
-      const containerElement: HTMLElement | null = document.getElementById("container");
-      if (containerElement) {
-        containerElement.innerHTML = "";
+    this.categoryId = this.route.snapshot.paramMap.get('categoryId') || undefined;
+
+
+
+
+    const getItems = async () => {
+      try {
+        await fetch('https://db-api-wishlist.lunalu.org/?get=items&category=' + this.categoryId)
+          .then(response => response.json())
+          .then(data => {
+            //console.log(data);
+            data.forEach((item: any) => {
+
+              //console.log(item);
+
+              const item_display: HTMLDivElement = document.createElement("div");
+              item_display.className = "category_display";
+              item_display.onclick = () => {
+                window.location.pathname = "category/" + item.code_name
+              }
+
+              const item_title: HTMLHeadingElement = document.createElement("h1");
+              item_title.innerText = item.title;
+
+              const img: HTMLImageElement = document.createElement("img");
+              img.src = item.img_url;
+              img.height = 200;
+              img.width = 200;
+
+              //this.getPrices;
+
+
+              item_display.appendChild(img);
+              item_display.appendChild(item_title);
+
+              const containerElement = document.getElementById("container");
+              if (containerElement) {
+                containerElement.appendChild(item_display);
+              }
+
+
+            })
+          })
+      } catch (e) {
+        console.log(e);
       }
+    }
 
-      items.forEach(item => {
-        console.log(item);
-
-        const category_display: HTMLDivElement = document.createElement("div");
-        category_display.className = "category_display";
-        //category_display.attributes.setNamedItem("(click)") = item.url;
-        category_display.onclick = () => {
-          window.open(item.url)
-        }
-
-        const title: HTMLHeadingElement = document.createElement("h1");
-        title.innerText = item.title;
-
-        const img: HTMLImageElement = document.createElement("img");
-        img.src = item.img_url;
-        img.height = 200;
-        img.width = 200;
+    getItems();
 
 
-        category_display.appendChild(img);
-        category_display.appendChild(title);
+    const GetPrices = async () => {
 
-        containerElement?.appendChild(category_display)
-      })
-    })
+      if (!window.localStorage.getItem("currency")) {
+        await fetch("https://api.ipify.org?format=json")
+          .then(response => response.json())
+          .then(async data => {
+            console.log(data.ip);
+            await fetch("https://api.ipdata.co/" + data.ip + "/currency?api-key=f5da3069cd55c8abd5a67d09e622858c568caa8dde787ccd29e7f8d8")
+              .then(response => response.json())
+              .then(data => {
+                this.localCurrency = data.code;
+                window.localStorage.setItem("currency", data.code);
+                window.localStorage.setItem("currency-symbol", data.symbol);
+              })
+          })
+      }
+    }
+
+
   }
+
+
 }
+
+

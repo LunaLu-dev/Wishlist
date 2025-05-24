@@ -1,6 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 export interface Categories {
   code_name: string;
@@ -16,21 +14,49 @@ export interface Categories {
 })
 export class CategoriesComponent implements OnInit {
 
-
-  private firestore = inject(Firestore);
-  categories$: Observable<Categories[]>;
+ngOnInit() {
 
 
-  constructor() {
-    //TODO: DELETE THIS LATER (TEST API)
-    const userid: string = "PemwLD9jrlh1P5vHGSfI";
+  getCategories();
+
+  async function getCategories() {
+    await fetch('https://db-api-wishlist.lunalu.org/?get=categories')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        data.forEach((category: any) => {
+          console.log(category);
+
+          const category_display: HTMLDivElement = document.createElement("div");
+          category_display.className = "category_display";
+          category_display.onclick = () => {window.location.pathname = "category/"+category.code_name}
+
+          const cat_title: HTMLHeadingElement = document.createElement("h1");
+          cat_title.innerText = category.title;
+
+          const img:  HTMLImageElement = document.createElement("img");
+          img.src = category.img_url;
+          img.height = 200;
+          img.width = 200;
 
 
-    const categoriesCollection = collection(this.firestore, 'users/' + userid + '/categories');
-    this.categories$ = collectionData(categoriesCollection) as Observable<Categories[]>;
+          category_display.appendChild(img);
+          category_display.appendChild(cat_title);
+
+          const containerElement = document.getElementById("container");
+          if (containerElement) {
+            containerElement.appendChild(category_display);
+          }
+        })
+      });
+
   }
 
-  ngOnInit() {
+
+
+}
+
+  /*ngOnInit() {
     this.categories$.subscribe(categories => {
       const containerElement: HTMLElement|null = document.getElementById("container");
       if (containerElement) {
@@ -59,5 +85,5 @@ export class CategoriesComponent implements OnInit {
         containerElement?.appendChild(category_display)
       })
     })
-  }
+  }*/
 }

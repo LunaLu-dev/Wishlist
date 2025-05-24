@@ -4,6 +4,5 @@ import {ItemsComponent} from './items/items.component';
 
 export const routes: Routes = [
   {path: '', component: CategoriesComponent},
-  {path: 'category/:categoryId', component: ItemsComponent},
-  {path: '**', redirectTo: ''}
+  {path: 'category/:categoryId', component: ItemsComponent}
 ];

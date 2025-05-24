@@ -13,25 +13,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideAppCheck(() => {
-      return initializeAppCheck(undefined, {
-        provider: new ReCaptchaV3Provider('6LfxJDYrAAAAADz3DvXNo_GHvsMWN2QE-qJVqtFF'),
-        isTokenAutoRefreshEnabled: true
-      });
-    }),
-    provideFirestore(() => {
-      const firestore = getFirestore();
-      if (environment.useEmulators) {
-        connectFirestoreEmulator(
-          firestore,
-          environment.emulators.firestore.host,
-          environment.emulators.firestore.port
-        );
-      }
-      return firestore;
-    }),
   ],
 };
 
