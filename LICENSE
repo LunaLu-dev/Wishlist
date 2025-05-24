@@ -1,0 +1,47 @@
+LICENSE AGREEMENT
+
+This License Agreement ("Agreement") is entered into by and between Luna Nordbergh and the individual or entity using the website ("Licensee"). By accessing and using the website, Licensee agrees to the terms and conditions of this Agreement.
+
+1. GRANT OF LICENSE
+1.1. Subject to the terms and conditions of this Agreement, Licensor hereby grants to Licensee a non-exclusive, non-transferable, and limited license to use the website (the "Website") solely for its intended purpose, provided that Licensee has purchased a valid license key from the Licensor.
+
+1.2. The Licensee acknowledges and agrees that the Website will only function when a valid license key, provided by the Licensor, is hosted at a specific path on the Licensee's server as detailed in this Agreement.
+
+2. LICENSE KEY PURCHASE
+2.1. Licensee must purchase a license key from Licensor to activate and use the Website.
+
+2.2. The License Key must be stored on the Licensee's server at the following path: /license.key. The Website will periodically check this path to ensure the presence of a valid license key.
+
+2.3. Failure to store the license key at the specified path or tampering with the key will result in the deactivation of the Website.
+
+3. LICENSE RESTRICTIONS
+3.1. Licensee shall not:
+
+a) Sublicense, sell, rent, lease, distribute, or otherwise transfer the Website or any portion thereof.
+
+4. TERM AND TERMINATION
+4.1. This Agreement shall commence on the date the Licensee first uses the Website and shall continue until terminated.
+
+4.2. Licensor may terminate this Agreement immediately if Licensee fails to comply with any terms of this Agreement.
+
+4.3. Upon termination, Licensee must cease all use of the Website and remove the license key from its server.
+
+5. DISCLAIMER OF WARRANTIES
+5.1. The Website is provided "as is" without warranties of any kind, either express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.
+
+6. LIMITATION OF LIABILITY
+6.1. In no event shall Licensor be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, arising out of or in connection with the use of the Website, even if Licensor has been advised of the possibility of such damages.
+
+7. GOVERNING LAW
+7.1. This Agreement shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law principles.
+
+8. ENTIRE AGREEMENT
+8.1. This Agreement constitutes the entire agreement between Licensor and Licensee regarding the use of the Website and supersedes all prior or contemporaneous agreements, understandings, and communications, whether written or oral.
+
+9. MODIFICATIONS
+9.1. Licensor reserves the right to modify this Agreement at any time, and such modifications will be effective upon posting on the Website or upon notification to Licensee. Continued use of the Website after any such changes shall constitute Licensee’s consent to such changes.
+
+10. SEVERABILITY
+10.1. If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+
+A license key can be acquired by emailing me at dev@lunalu.org
