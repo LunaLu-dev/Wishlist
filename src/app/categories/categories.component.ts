@@ -4,6 +4,8 @@ export interface Categories {
   code_name: string;
   img_url: string;
   title:  string;
+  external_state?: boolean;
+  external_url?: string;
 }
 
 @Component({
@@ -29,7 +31,13 @@ ngOnInit() {
 
           const category_display: HTMLDivElement = document.createElement("div");
           category_display.className = "category_display";
-          category_display.onclick = () => {window.location.pathname = "category/"+category.code_name}
+
+          if (category.external_state) {
+            category_display.onclick = () => {window.open(category.external_url, "_blank")}
+          }else{
+            category_display.onclick = () => {window.location.pathname = "category/"+category.code_name}
+          }
+
 
           const cat_title: HTMLHeadingElement = document.createElement("h1");
           cat_title.innerText = category.title;

@@ -1,7 +1,10 @@
 <div style="text-align: center;">
-  <img alt="Luna's Wishlist" class="mainTitle" height="300" id="mainTitle" ngSrc="/assets/logo.webp" onclick="window.location.pathname =''"
-       width="437"/>
+  <img alt="Luna's Wishlist" class="mainTitle" [height]="imgHeight" [width]="imgWidth" id="mainTitle" [src]="imagePath"
+       onclick="window.location.pathname =''"/>
+  <br>
+  <br>
   <br>
 </div>
 
 <router-outlet/>
+
