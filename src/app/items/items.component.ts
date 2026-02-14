@@ -72,10 +72,7 @@ export class ItemsComponent implements OnInit {
       await fetch('https://db-api-wishlist.lunalu.org/?get=items&category=' + this.categoryId)
         .then(response => response.json())
         .then(data => {
-          //console.log(data);
           data.forEach(async (item: any) => {
-
-            //console.log(item);
 
             const item_display: HTMLDivElement = document.createElement("div");
             item_display.className = "category_display";
@@ -155,12 +152,9 @@ export class ItemsComponent implements OnInit {
 
   }
 
-
   async ngOnInit() {
     this.getItems();
   }
-
-
 }
 
 
